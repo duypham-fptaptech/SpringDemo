@@ -1,7 +1,12 @@
 package com.example.springdemo.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Setter
@@ -10,9 +15,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Builder
+@Entity
+@Table(name = "students")
 public class Student {
-    private String rollNumber;
+    @Id
+    private String id;
     private String fullName;
     private String address;
-    private LocalDateTime dob;
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+    private int status;
 }
